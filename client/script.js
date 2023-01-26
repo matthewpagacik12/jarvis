@@ -67,6 +67,7 @@ const handleSubmit = async (e) => {
 
   // user's chatstripe
   chatContainer.innerHTML += chatStripe(false, data.get("prompt"));
+  console.log(data.get("prompt"));
 
   // to clear the textarea input
   form.reset();
@@ -99,9 +100,26 @@ const handleSubmit = async (e) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log(data);
     const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
-
-    typeText(messageDiv, parsedData);
+    if (
+      parsedData ===
+      "I was created by a team of engineers and scientists at Google."
+    ) {
+      typeText(messageDiv, "I was created by MattyIce, an amazing human");
+    } else if (
+      parsedData === "I was created by a team of software engineers."
+    ) {
+      typeText(messageDiv, "I was created by MattyIce, he is very cool!");
+    } else if (
+      parsedData === " I was created by a team of engineers and scientists."
+    ) {
+      typeText(messageDiv, "I was created by MattyIce, he is the best human");
+    } else if (parsedData === "My name is John.") {
+      typeText(messageDiv, "My name is Jarvis");
+    } else {
+      typeText(messageDiv, parsedData);
+    }
   } else {
     const err = await response.text();
 
