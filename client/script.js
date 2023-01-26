@@ -100,7 +100,6 @@ const handleSubmit = async (e) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
     if (
       parsedData ===
