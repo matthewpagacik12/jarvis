@@ -119,6 +119,8 @@ const handleSubmit = async (e) => {
       );
     } else if (parsedData === "My name is John.") {
       typeText(messageDiv, "My name is Jarvis");
+    } else if (parsedData === "My name is [your name].") {
+      typeText(messageDiv, "My name is Jarvis");
     } else {
       typeText(messageDiv, parsedData);
     }
