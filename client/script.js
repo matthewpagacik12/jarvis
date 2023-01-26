@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
       parsedData ===
       "I was created by a team of engineers and scientists at Google."
     ) {
-      typeText(messageDiv, "I was created by MattyIce, an amazing human");
+      typeText(messageDiv, "I was created by MattyIce, he is a big puma guy!");
     } else if (
       parsedData === "I was created by a team of software engineers."
     ) {
@@ -114,7 +114,10 @@ const handleSubmit = async (e) => {
     } else if (
       parsedData === " I was created by a team of engineers and scientists."
     ) {
-      typeText(messageDiv, "I was created by MattyIce, he is the best human");
+      typeText(
+        messageDiv,
+        "I was created by MattyIce, his nickname is also Pags!"
+      );
     } else if (parsedData === "My name is John.") {
       typeText(messageDiv, "My name is Jarvis");
     } else {
