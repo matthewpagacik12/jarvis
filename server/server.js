@@ -2,6 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import { Configuration, OpenAIApi } from "openai";
+import connect, { Jarvis } from "../server/db.js";
 
 dotenv.config();
 
@@ -14,14 +15,21 @@ const openai = new OpenAIApi(configuration);
 const app = express();
 app.use(cors());
 app.use(express.json());
+const db = connect();
 
 app.get("/", async (req, res) => {
-  res.status(200).json({ message: "Hello World" });
+  res.status(200).json({ message: "open ai backend" });
 });
 
 app.post("/", async (req, res) => {
   try {
     const prompt = req.body.prompt;
+    var newJarvis = new Jarvis({
+      message: prompt,
+      received: true,
+      created_at: new Date(),
+    });
+    newJarvis.save();
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `${prompt}`,
